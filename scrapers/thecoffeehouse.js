@@ -13,10 +13,10 @@ module.exports = async function scrapeTCH() {
     timeout: 60000
   });
 
-  await page.waitForSelector('.owl-item .item img');
+  await page.waitForSelector('img[src*="/static/images/banner2"]', { timeout: 60000 });
 
   const images = await page.evaluate(() => {
-    return Array.from(document.querySelectorAll('.owl-item img'))
+    return Array.from(document.querySelectorAll('img[src*="/static/images/banner2"]'))
       .map(img => img.src.startsWith('/')
         ? 'https://promothecoffeeehouse.com.vn/' + img.src
         : img.src);

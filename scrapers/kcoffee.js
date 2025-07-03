@@ -18,10 +18,10 @@ module.exports = async function scrapeKCoffee() {
   });
 
   // Chờ bất kỳ ảnh nào có chứa domain cdn.kphucsinh.vn (ảnh khuyến mãi)
-  await page.waitForSelector('img[src*="cdn.kphucsinh.vn"]', { timeout: 60000 });
+  await page.waitForSelector('img[src*="cdn.kphucsinh.vn/Media/DMSImage"]', { timeout: 60000 });
 
   const images = await page.evaluate(() => {
-    return Array.from(document.querySelectorAll('img[src*="cdn.kphucsinh.vn"]'))
+    return Array.from(document.querySelectorAll('img[src*="cdn.kphucsinh.vn/Media/DMSImage"]'))
       .map(img => img.src);
   });
 
