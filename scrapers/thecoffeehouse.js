@@ -5,7 +5,7 @@ module.exports = async function scrapeTCH() {
   const page = await browser.newPage();
 
   await page.goto('https://www.thecoffeehouse.com/pages/khuyen-mai', { waitUntil: 'networkidle2' });
-  await page.waitForSelector('img'); // Cần refine selector nếu có class cụ thể
+  await page.waitForSelector('.owl-item img');
 
   const images = await page.evaluate(() =>
     Array.from(document.querySelectorAll('img')).map(img => img.src)

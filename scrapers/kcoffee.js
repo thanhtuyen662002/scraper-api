@@ -5,7 +5,7 @@ module.exports = async function scrapeKCoffee() {
   const page = await browser.newPage();
 
   await page.goto('https://www.kphucsinh.vn/collections/uu-dai', { waitUntil: 'networkidle2' });
-  await page.waitForSelector('img'); // Cần refine nếu cần ảnh khuyến mãi chính xác
+  await page.waitForSelector('slide-img-wrapper img');
 
   const images = await page.evaluate(() =>
     Array.from(document.querySelectorAll('img')).map(img => img.src)
