@@ -16,10 +16,11 @@ module.exports = async function scrapeTCH() {
   await page.waitForSelector('img[src*="/static/images/banner2"]', { timeout: 60000 });
 
   const images = await page.evaluate(() => {
-    return Array.from(document.querySelectorAll('img[src*="/static/images/banner2"]'))
+    const raw = Array.from(document.querySelectorAll('img[src*="/static/images/banner2"]'))
       .map(img => img.src.startsWith('/')
         ? 'https://promothecoffeeehouse.com.vn/' + img.src
         : img.src);
+    return [...new Set(raw)];
   });
 
   await browser.close();

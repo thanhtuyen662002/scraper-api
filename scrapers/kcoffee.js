@@ -21,8 +21,9 @@ module.exports = async function scrapeKCoffee() {
   await page.waitForSelector('img[src*="cdn.kphucsinh.vn/Media/DMSImage"]', { timeout: 60000 });
 
   const images = await page.evaluate(() => {
-    return Array.from(document.querySelectorAll('img[src*="cdn.kphucsinh.vn/Media/DMSImage"]'))
+    const raw = Array.from(document.querySelectorAll('img[src*="cdn.kphucsinh.vn/Media/DMSImage"]'))
       .map(img => img.src);
+    return [...new Set(raw)];
   });
 
   await browser.close();
