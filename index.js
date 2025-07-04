@@ -12,7 +12,7 @@ app.use(cors());
 
 // ===== Redis Setup =====
 const redis = createClient({
-  url: process.env.REDIS_URL,
+  url: process.env.REDIS_PUBLIC_URL,
 });
 
 redis.on('error', err => console.error('Redis error:', err));
