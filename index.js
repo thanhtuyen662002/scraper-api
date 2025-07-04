@@ -12,7 +12,7 @@ app.use(cors());
 
 // ===== Redis Setup =====
 const redis = createClient({
-  url: 'redis://default:mzYLIykaBzBdEzSdquzYHhSOZeMHttkg@switchyard.proxy.rlwy.net:25571',
+  url: process.env.REDIS_PUBLIC_URL,
 });
 
 redis.on('error', err => console.error('Redis error:', err));
