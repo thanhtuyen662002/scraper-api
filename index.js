@@ -54,7 +54,7 @@ app.get('/api/:brand', async (req, res) => {
 });
 
 // ===== Cron Job mỗi 3h đêm =====
-cron.schedule('0 3 * * *', {timezone: 'Asia/Ho_Chi_Minh'}, async () => {
+cron.schedule('0 18 * * *', async () => {
   console.log('🕛 Đang cập nhật ảnh mới vào Redis...');
 
   try {
