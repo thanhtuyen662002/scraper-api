@@ -9,10 +9,11 @@ module.exports = async function scrapeHighlands() {
 
   await page.goto("https://promo.highlandscoffee.com.vn/uudai4", {
     waitUntil: "networkidle2",
-    timeout: 60000
+    timeout: 60000,
   });
   await page.waitForSelector(
-    "img.emblaCarousel_embla__slide__img__body__HYshL"
+    "img.emblaCarousel_embla__slide__img__body__HYshL",
+    { timeout: 60000 }
   );
 
   const images = await page.evaluate(() =>
